@@ -10,7 +10,7 @@ Golang URL shortener API server
 
 ### Configuration
 
-Add `.env` to the repository, and set the required environment variables:
+Add the file `.env` to the repository, and set the required environment variables:
 
 ```
 RDS_ADDR=<redis-server address>
@@ -62,3 +62,4 @@ $ docker-compose up
 There are some features plan to be done in the future:
 
 - Handle duplicated key/url
+- Caching
