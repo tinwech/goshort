@@ -21,7 +21,6 @@ var rdb = redis.NewClient(&redis.Options{
 
 // TODO: handle duplicated longUrl
 // TODO: handle encoding method
-// TODO: load balancing
 
 func encode(key uint64) string {
 	element := "0123456789abcdefghijklmnopqustuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -56,7 +55,6 @@ func shorten(c *gin.Context) {
 	fmt.Println("[DEBUG]", shortUrl, longUrl)
 	c.JSON(200, gin.H{
 		"shortUrl": shortUrl,
-		// "longUrl":  longUrl,
 	})
 }
 
@@ -80,7 +78,6 @@ func expand(c *gin.Context) {
 
 	fmt.Println("[DEBUG]", key, val)
 	c.JSON(200, gin.H{
-		// "shortUrl": key,
 		"longUrl": val,
 	})
 }
@@ -89,7 +86,5 @@ func main() {
 	r := gin.Default()
 	r.GET("/api/shorten", shorten)
 	r.GET("/api/expand", expand)
-
-	fmt.Println("server starting on port 8080")
-	r.Run(":8080")
+	r.Run()
 }

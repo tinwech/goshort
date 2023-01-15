@@ -1,0 +1,38 @@
+version: "3"
+services:
+  load-balance:
+    restart: "always"
+    build: ./nginx
+    depends_on:
+      - server1
+      - server2
+      - server3
+    ports:
+      - 8080:80
+  server1:
+    restart: "always"
+    build: ./src
+    environment:
+      - PORT=3001
+      - SERVICE_NAME=server1
+      - RDS_ADDR=${RDS_ADDR}
+      - RDS_USER=${RDS_USER}
+      - RDS_PWD=${RDS_PWD}
+  server2:
+    restart: "always"
+    build: ./src
+    environment:
+      - PORT=3002
+      - SERVICE_NAME=server2
+      - RDS_ADDR=${RDS_ADDR}
+      - RDS_USER=${RDS_USER}
+      - RDS_PWD=${RDS_PWD}
+  server3:
+    restart: "always"
+    build: ./src
+    environment:
+      - PORT=3003
+      - SERVICE_NAME=server3
+      - RDS_ADDR=${RDS_ADDR}
+      - RDS_USER=${RDS_USER}
+      - RDS_PWD=${RDS_PWD}
