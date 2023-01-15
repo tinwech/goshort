@@ -4,13 +4,24 @@ Golang URL shortener API server
 
 ## Getting started
 
-### Run the server
+### Prerequisites
+
+- [Install docker compose](https://docs.docker.com/compose/install/)
+
+### Configuration
+
+Add `.env` to the repository, and set the required environment variables:
+
+```
+RDS_ADDR=<redis-server address>
+RDS_USER=<redis-username>
+RDS_PWD=<redis-password>
+```
+
+### Run with docker-compose
 
 ```shell
-$ RDS_ADDR=<redis server address> \
-RDS_USER=<username> \
-RDS_PWD=<password> \
-go run server.go
+$ docker-compose up
 ```
 
 ### Usage
@@ -28,7 +39,7 @@ go run server.go
     example:
 
     ```
-    curl --location --request POST "localhost:8080/shorten?longUrl=$longUrl"
+    curl --request GET "localhost:8080/shorten?longUrl=$longUrl"
     ```
 
 - `GET /api/expand`
@@ -41,7 +52,6 @@ go run server.go
     |---|---|---|
     |longUrl   |string   |Original URL   |
 
-    
     example:
 
     ```
@@ -51,6 +61,4 @@ go run server.go
 
 There are some features plan to be done in the future:
 
-- Load balancing
-- handle duplicated key
-- handle duplicated URL
+- Handle duplicated key/url
