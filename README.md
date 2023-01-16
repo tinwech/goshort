@@ -6,6 +6,7 @@ Golang URL shortener API server
 
 ### Prerequisites
 
+- [Setup redis database](https://redis.com/redis-enterprise-cloud/pricing/)
 - [Install docker compose](https://docs.docker.com/compose/install/)
 
 ### Configuration
