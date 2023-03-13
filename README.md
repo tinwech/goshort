@@ -2,6 +2,8 @@
 
 Golang URL shortener API server
 
+![image](https://user-images.githubusercontent.com/80531783/224757203-228def6f-c466-40cc-8c97-a687facd2371.png)
+
 ## Getting started
 
 ### Prerequisites
